@@ -19,7 +19,7 @@
     "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
     "pug": "pug src/views/layout.pug && mv src/views/layout.html dist/index.html",
     "html": "echo '=> getting html' && mkdir -p dist && npm run pug && cd dist && html *.html",
-    "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/ dist/images",
+    "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/* dist/images",
     "build": "npm run css && npm run images && npm run html",
     "start": "node server/Main.js",
     "compile_less": "less-watch-compiler src/style dist/style",
