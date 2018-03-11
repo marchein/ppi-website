@@ -1,0 +1,39 @@
+{
+  "name": "ppi-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/main.js",
+  "dependencies": {
+    "less-livereload": "^0.1.0",
+    "live-server": "latest"
+  },
+  "devDependencies": {
+    "less": "latest",
+    "less-plugin-clean-css": "latest",
+    "less-watch-compiler": "^1.11.0",
+    "pug": "latest",
+    "pug-cli": "latest",
+    "html": "^1.0.0"
+  },
+  "scripts": {
+    "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
+    "pug": "pug src/views/layout.pug && mv src/views/layout.html dist/index.html",
+    "html": "echo '=> getting html' && mkdir -p dist && npm run pug && cd dist && html *.html",
+    "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/ dist/images",
+    "build": "npm run css && npm run images && npm run html",
+    "start": "node server/Main.js",
+    "compile_less": "less-watch-compiler src/style dist/style",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "production": "mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marchein/ppi-website.git"
+  },
+  "author": "Marc Hein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marchein/ppi-website/issues"
+  },
+  "homepage": "https://github.com/marchein/ppi-website#readme"
+}
