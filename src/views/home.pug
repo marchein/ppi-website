@@ -1,0 +1,23 @@
+extends layout.pug
+
+append content
+    picture
+        source(srcset="images/app@2x.png 2x, images/app.png 1x")
+        img(src='images/app.png', alt='A ppi calculator written in JavaFX')
+    br
+    h2 What is "PPI Calculator"?
+    p
+        | The PPI Calculator is an app which allows you to quickly and easily the PPI count of a given screen, image or what else! But as it's PPI... mostly screens I guess.
+    h2 What exactly is "PPI"?
+    p
+        | PPI stands for "pixels per inch" and describes the pixel density of an electronic screen. If you want to learn more about it, I suggest reading the 
+        a(href='https://en.wikipedia.org/wiki/Pixel_density') Wikipedia article
+        |  on that topic.
+    h2#download Download
+    p Sounds great! Where can I find it?
+    p
+        | You can either download the source code (it's Java) from my 
+        a(href='https://github.com/marchein/ppi/') Github page
+        |  and compile the code yourself or you can go to the releases page of the project and download an already precompiled .jar file. Just run it and you are good to go. If you don't want to go through all these pages, you can also just click 
+        a(href='https://github.com/marchein/ppi/archive/master.zip', aria-label='Download marchein/ppi on GitHub') here to download
+        | .

@@ -2,29 +2,31 @@
   "name": "ppi-website",
   "version": "1.0.0",
   "description": "",
-  "main": "js/main.js",
+  "main": "server/Main.js",
   "dependencies": {
-    "less-livereload": "^0.1.0",
-    "live-server": "latest"
+    "less": "^3.0.4",
+    "live-server": "^1.2.0"
   },
   "devDependencies": {
-    "less": "latest",
+    "html": "^1.0.0",
     "less-plugin-clean-css": "latest",
-    "less-watch-compiler": "^1.11.0",
     "pug": "latest",
-    "pug-cli": "latest",
-    "html": "^1.0.0"
+    "pug-cli": "latest"
   },
   "scripts": {
-    "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
-    "pug": "pug src/views/layout.pug && mv src/views/layout.html dist/index.html",
-    "html": "echo '=> getting html' && mkdir -p dist && npm run pug && cd dist && html *.html",
-    "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/* dist/images",
-    "build": "npm run css && npm run images && npm run html",
-    "start": "node server/Main.js",
-    "compile_less": "less-watch-compiler src/style dist/style",
+    "lint": "eslint -c ./.eslintrc.json js/**",
+    "js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
+    "css": "mkdir -p dist/style && lessc --global-var=\"currentTheme='light'\" src/style/style.less dist/style/style-light.css && lessc --global-var=\"currentTheme='dark'\" src/style/style.less dist/style/style-dark.css",
+    "pug": "pug -P src/views/home.pug && mv src/views/home.html dist/index.html",
+    "html": "mkdir -p dist && npm run pug && cd dist && html *.html",
+    "favicons": "real-favicon generate faviconDescription.json faviconData.json dist/images/icons",
+    "images": "mkdir -p dist/images && cp -R src/images/* dist/images",
+    "fonts": "mkdir -p dist/fonts && cp -R src/style/fonts dist",
+    "build": "npm run css && npm run js && npm run images && npm run html && npm run fonts",
+    "build:production": "npm run build && npm run favicons",
+    "start": "node .",
     "clean": "rm -rf node_modules && rm -rf dist",
-    "production": "mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
+    "production": "npm run build:production && mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
   },
   "repository": {
     "type": "git",
