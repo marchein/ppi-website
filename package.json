@@ -4,16 +4,15 @@
   "description": "",
   "main": "js/main.js",
   "dependencies": {
-    "less-livereload": "^0.1.0",
     "live-server": "latest"
   },
   "devDependencies": {
+    "html": "^1.0.0",
     "less": "latest",
     "less-plugin-clean-css": "latest",
-    "less-watch-compiler": "^1.11.0",
+    "less-watch-compiler": "^1.11.3",
     "pug": "latest",
-    "pug-cli": "latest",
-    "html": "^1.0.0"
+    "pug-cli": "latest"
   },
   "scripts": {
     "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
