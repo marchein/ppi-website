@@ -2,7 +2,7 @@
   "name": "ppi-website",
   "version": "1.0.0",
   "description": "",
-  "main": "js/main.js",
+  "main": "server/Main.js",
   "dependencies": {
     "live-server": "latest"
   },
@@ -18,9 +18,10 @@
     "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
     "pug": "pug src/views/layout.pug && mv src/views/layout.html dist/index.html",
     "html": "echo '=> getting html' && mkdir -p dist && npm run pug && cd dist && html *.html",
+    "fonts": "mkdir -p dist/fonts && cp -R src/style/fonts dist",
     "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/* dist/images",
-    "build": "npm run css && npm run images && npm run html",
-    "start": "node server/Main.js",
+    "build": "npm run css && npm run images && npm run html && npm run fonts",
+    "start": "node .",
     "compile_less": "less-watch-compiler src/style dist/style",
     "clean": "rm -rf node_modules && rm -rf dist",
     "production": "mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
