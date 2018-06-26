@@ -16,7 +16,7 @@
   "scripts": {
     "lint": "eslint -c ./.eslintrc.json js/**",
     "js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
-    "css": "mkdir -p dist/style && lessc --global-var=\"currentTheme='light'\" src/style/style.less dist/style/style-light.css && lessc --global-var=\"currentTheme='dark'\" src/style/style.less dist/style/style-dark.css",
+    "css": "mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
     "pug": "pug -P src/views/home.pug && mv src/views/home.html dist/index.html",
     "html": "mkdir -p dist && npm run pug && cd dist && html *.html",
     "favicons": "real-favicon generate faviconDescription.json faviconData.json dist/images/icons",

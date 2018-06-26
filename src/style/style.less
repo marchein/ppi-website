@@ -1,75 +1,9 @@
-// Solarized color scheme
-// http://ethanschoonover.com/solarized#the-values
-// Background/Foreground Tones
-@base03:#002b36;
-@base02: #073642;
-// Content Tones
-@base01: #586e75;
-@base00: #657b83;
-@base0: #839496;
-@base1: #93a1a1;
-// Background/Foreground Tones
-@base2: #eee8d5;
-@base3: #fdf6e3;
-// Accent Colors
-@yellow: #b58900;
-@orange: #cb4b16;
-@red: #dc322f;
-@magenta: #d33682;
-@violet: #6c71c4;
-@blue: #268bd2;
-@cyan: #2aa198;
-@green: #859900;
-
-@font-size--super-large: x-large;
-@font-size--large: large;
-@font-size--medium: medium;
-@font-size--small: small;
-@font-size--super-small: x-small;
-
-@defaultSelection: none;
-.setSelection(@selection: @defaultSelection) {
-	user-select: @selection;	
-	-moz-user-select: @selection;
-	-khtml-user-select: @selection;
-	-webkit-user-select: @selection;
-}
-
-.defineCurrentThemeIfNotDefined() {
-	@currentTheme: "light";
-}
-.defineCurrentThemeIfNotDefined();
-
-.theme (@mode) when (@mode = "dark") {
-	@mainBackground: @base03;
-	@contentBackground: @base02;
-	@mainText: @base1;
-	@secondaryText: darken(@base0, 10%);
-	@highlightText: @green;
-	@borderColor: @cyan;
-	@headerColor: @base1;
-	@portfolioBackground: @mainBackground;
-	@portfolioBackgroundHover: @contentBackground;
-	@portfolioText: @highlightText;
-	@linkHover: darken(@highlightText, 5%);
-}
-
-.theme (@mode) when (@mode = "light") {
-	@mainBackground: #cccccc;
-	@contentBackground: #FFFFFF;
-	@mainText: #071108;
-	@secondaryText: #59656F;
-	@highlightText: #4C464A;
-	@borderColor: #000000;
-	@headerColor: #000000;
-	@portfolioBackground: #ffffff;
-	@portfolioBackgroundHover: #E0E0E2;
-	@portfolioText: #071108;
-	@linkHover: @headerColor;
-}
-
-.defineCurrentThemeIfNotDefined();
-.theme(@currentTheme);
+@mainText: black;
+@highlightText:#333333;
+@linkHover: lighten(black, 40%);
+@borderColor: black;
+@contentBackground: white;
+@mainBackground: darken(white, 5%);
 
 @font-face {
 	font-family: 'Open Sans';
@@ -94,7 +28,7 @@ body {
 
 #container {
 	margin: 0 auto;
-	max-width: 700px;
+	max-width: 70%;
 
 	#header {
 		padding-bottom: 30px;
@@ -104,28 +38,13 @@ body {
 		.logo {
 			min-width: 100px;
 			min-height: 100px;
-			max-width: 20%;
-			max-height: 20%;
-			@media screen and (max-width: 1000px) {
-				float: left;
-				max-width: 100px;
-				max-height: 100px;
-			} 
-			@media screen and (max-width: 625px) {
-				float: none;
-			} 
+			max-width: 10%;
+			max-height: 10%;
 			border: 1px solid @borderColor;
 			cursor: pointer;
 		}
 		  
 		h1 {
-			@media screen and (max-width: 1000px) {
-				position: relative;
-				top: 25px;
-			} 
-			@media screen and (max-width: 625px) {
-				position: initial;
-			} 
 			cursor: pointer;
 		}
 	}
@@ -135,22 +54,21 @@ body {
 	}
 	
 	#content {
-		padding: 10px;
+		padding: 20px;
 		margin: 0 auto;
 	}
 	
 	img {
 		display: block;
 		margin: 0 auto;
-		width: 100%
+		max-width: 100%;
 	}
 	
 	a {
 		color: @highlightText;
-		text-decoration: none;
 	
 		&:hover {
-			text-decoration: underline;
+			text-decoration: none;
 			color: @linkHover;
 			transition: background 0.4s, color 0.4s, width 0.4s linear;
 			-webkit-transition: background 0.4s, color 0.4s, width 0.4s linear;
@@ -160,97 +78,46 @@ body {
 	}
 
 	.box {
-		background: @contentBackground;
 		width: 100%;
 		padding: 10px;
 		margin: 25px 0 0 0;
-		border: 1px solid @borderColor;
-		border-radius: 5px;
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-
-	#cookie {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		 background: @contentBackground;
-		 padding: 20px;
-		 font-size: 14px;
-	}
-	#cookie a.button {
-		float: right;
-		cursor: pointer;
-		background: @mainBackground;
-		padding: 8px 20px;
-		margin-left: 10px;
-		border: 1px solid @borderColor;
-		border-radius: 5px;
-		background-color: @portfolioBackground;
-		font-weight: bold;
-		float: right;
-	
-		&:hover {
-			background-color: @portfolioBackgroundHover;
-		}
-	}
-	
-	#cookie p.cookiemessage {
-		float:left;
-		width: ~"calc(90% - 80px)";
-		padding: 5px;
-		margin: 0;
-	}
-
-	@media screen and (max-width: 950px) {
-		#cookie p.cookiemessage {
-			width: 100%;
-			padding: 10px;
-			margin: 0;
-		}
 	}
 
 	#footer {
-	.setSelection(@defaultSelection);
+		#imprintlinks {
+			width: 100%;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			padding-bottom: 5px;
+		}
+	
+		#copyright {
+			width: 100%;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			white-space: pre;
+			padding-top: 5px;
+		}
+		span {
+			&.active {
+				text-decoration: underline;
+				&:hover {
+					cursor: initial;
+				}
+			}
 
-	span {
-		&.active {
-			text-decoration: underline;
 			&:hover {
-				cursor: initial;
+				text-decoration: underline;
+				cursor: pointer;
 			}
 		}
-
-		&:hover {
-			text-decoration: underline;
-			cursor: pointer;
-		}
 	}
-
-	#imprintlinks {
-		width: 100%;
-		padding: 0;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		border-bottom: 1px solid @borderColor;
-		padding-bottom: 5px;
-	}
-
-	#copyright {
-		width: 100%;
-		padding: 0;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-		white-space: pre;
-		padding-top: 5px;
-	}
-}
 }
 
 @media screen and (max-width:650px) {
@@ -266,15 +133,7 @@ body {
 		display: block;
 	}
 
-	#content #intro {
-		padding-right: 0;
-	}
-
 	#content > * {
 		width: 100% !important;
-	}
-
-	#content > #tools {
-		margin: 0;
 	}
 }
