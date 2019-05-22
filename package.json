@@ -4,27 +4,30 @@
   "description": "",
   "main": "server/Main.js",
   "dependencies": {
-    "live-server": "latest"
+    "browserify": "^16.2.3",
+    "less": "^3.9.0",
+    "live-server": "^1.2.1"
   },
   "devDependencies": {
     "html": "^1.0.0",
-    "less": "latest",
     "less-plugin-clean-css": "latest",
-    "less-watch-compiler": "^1.11.3",
     "pug": "latest",
     "pug-cli": "latest"
   },
   "scripts": {
-    "css": "echo '=> compiling less' && mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
-    "pug": "pug src/views/layout.pug && mv src/views/layout.html dist/index.html",
-    "html": "echo '=> getting html' && mkdir -p dist && npm run pug && cd dist && html *.html",
+    "lint": "eslint -c ./.eslintrc.json js/**",
+    "js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
+    "css": "mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
+    "pug": "pug -P src/views/home.pug && mv src/views/home.html dist/index.html",
+    "html": "mkdir -p dist && npm run pug && cd dist && html *.html",
+    "favicons": "real-favicon generate faviconDescription.json faviconData.json dist/images/icons",
+    "images": "mkdir -p dist/images && cp -R src/images/* dist/images",
     "fonts": "mkdir -p dist/fonts && cp -R src/style/fonts dist",
-    "images": "echo '=> getting images' && mkdir -p dist/images && cp -R src/images/* dist/images",
-    "build": "npm run css && npm run images && npm run html && npm run fonts",
+    "build": "npm run css && npm run js && npm run images && npm run html && npm run fonts",
+    "build:production": "npm run build && npm run favicons",
     "start": "node .",
-    "compile_less": "less-watch-compiler src/style dist/style",
     "clean": "rm -rf node_modules && rm -rf dist",
-    "production": "mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
+    "production": "npm run build:production && mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
   },
   "repository": {
     "type": "git",

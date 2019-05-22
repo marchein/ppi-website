@@ -5,31 +5,29 @@ html(lang='en')
 		title PPI calculator
 		meta(name='description', content='PPI calculator')
 		meta(name='author', content='Marc Hein')
-		link(rel='shortcut icon', type='image/jpg', href='images/ppi.jpg')
-		link(href='style/style.css', rel='stylesheet')
 		meta(name='viewport', content='initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no, viewport-fit=cover')
+		meta(name='apple-mobile-web-app-capable', content='no')
+		meta(name='referrer', content='no-referrer')
+		meta(name='msapplication-TileColor', content='#cdcdcd')
+		meta(name='msapplication-TileImage', content='images/icons/mstile-144x144.png')
+		meta(name='theme-color', content='#ffffff')
+		link(rel='shortcut icon', type='image/jpg', href='images/ppi.jpg')
+		link(rel='stylesheet' href='style/style.css', id='webStyle')
+		link(rel='apple-touch-icon', sizes='180x180', href='images/icons/apple-touch-icon.png')
+		link(rel='icon', type='image/png', sizes='32x32', href='images/icons/favicon-32x32.png')
+		link(rel='icon', type='image/png', sizes='16x16', href='images/icons/favicon-16x16.png')
+		link(rel='manifest', href='images/icons/site.webmanifest')
+		link(rel='mask-icon', href='images/icons/safari-pinned-tab.svg', color='#7a7a7a')
+		link(rel='shortcut icon', href='images/icons/favicon.ico')
+
 	body
 		#container
 			#header
+				img.logo(src="images/ppi.jpg")
 				h1 A ppi calculator written in JavaFX
-			#content
-				picture 
-					source(srcset="images/app@2x.png 2x, images/app.png 1x") 
-					img(src='images/app.png', alt='A ppi calculator written in JavaFX') 
-				br
-				h2 What is "PPI Calculator"?
-				p
-					| The PPI Calculator is an app which allows you to quickly and easily the PPI count of a given screen, image or what else! But as it's PPI... mostly screens I guess.
-				h2 What exactly is "PPI"?
-				p
-					| PPI stands for "pixels per inch" and describes the pixel density of an electronic screen. If you want to learn more about it, I suggest reading the 
-					a(href='https://en.wikipedia.org/wiki/Pixel_density') Wikipedia article
-					|  on that topic.
-				h2#download Download
-				p Sounds great! Where can I find it?
-				p
-					| You can either download the source code (it's Java) from my 
-					a(href='https://github.com/marchein/ppi/') Github page
-					|  and compile the code yourself or you can go to the releases page of the project and download an already precompiled .jar file. Just run it and you are good to go. If you don't want to go through all these pages, you can also just click 
-					a(href='https://github.com/marchein/ppi/archive/master.zip', aria-label='Download marchein/ppi on GitHub') here to download
-					| .
+			#content.box
+				block content
+			#footer.box 
+				#imprintlinks #[a(href="https://marc-hein.de/impressum.html") Impressum]&nbsp;-&nbsp;#[a(href="https://marc-hein.de/datenschutz.html") Datenschutz]
+				#copyright &copy; 2019 #[a(href="https://marc-hein.de") Marc Hein]
+		script(src="js/main.js")
