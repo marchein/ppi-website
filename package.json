@@ -4,8 +4,9 @@
   "description": "",
   "main": "server/Main.js",
   "dependencies": {
-    "less": "^3.0.4",
-    "live-server": "^1.2.0"
+    "browserify": "^16.2.3",
+    "less": "^3.9.0",
+    "live-server": "^1.2.1"
   },
   "devDependencies": {
     "html": "^1.0.0",
