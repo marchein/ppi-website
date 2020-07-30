@@ -1,41 +1,41 @@
 {
-  "name": "ppi-website",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/Main.js",
-  "dependencies": {
-    "browserify": "^16.5.0",
-    "less": "^3.10.3",
-    "live-server": "^1.2.1"
-  },
-  "devDependencies": {
-    "html": "^1.0.0",
-    "pug": "^2.0.4",
-    "pug-cli": "latest"
-  },
-  "scripts": {
-    "lint": "eslint -c ./.eslintrc.json js/**",
-    "js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
-    "css": "mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
-    "pug": "pug -P src/views/home.pug && mv src/views/home.html dist/index.html",
-    "html": "mkdir -p dist && npm run pug && cd dist && html *.html",
-    "favicons": "real-favicon generate faviconDescription.json faviconData.json dist/images/icons",
-    "images": "mkdir -p dist/images && cp -R src/images/* dist/images",
-    "fonts": "mkdir -p dist/fonts && cp -R src/style/fonts dist",
-    "build": "npm run css && npm run js && npm run images && npm run html && npm run fonts",
-    "build:production": "npm run build && npm run favicons",
-    "start": "node .",
-    "clean": "rm -rf node_modules && rm -rf dist",
-    "production": "npm run build:production && mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/marchein/ppi-website.git"
-  },
-  "author": "Marc Hein",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marchein/ppi-website/issues"
-  },
-  "homepage": "https://github.com/marchein/ppi-website#readme"
+	"name": "ppi-website",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server/Main.js",
+	"dependencies": {
+		"browserify": "16.5.1",
+		"less": "3.12.2"
+	},
+	"devDependencies": {
+		"html": "1.0.0",
+		"pug": "3.0.0",
+		"pug-cli": "1.0.0-alpha6",
+		"live-server": "^1.2.1"
+	},
+	"scripts": {
+		"lint": "eslint -c ./.eslintrc.json js/**",
+		"js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
+		"css": "mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
+		"pug": "pug -P src/views/home.pug && mv src/views/home.html dist/index.html",
+		"html": "mkdir -p dist && npm run pug && cd dist && html *.html",
+		"favicons": "real-favicon generate faviconDescription.json faviconData.json dist/images/icons",
+		"images": "mkdir -p dist/images && cp -R src/images/* dist/images",
+		"fonts": "mkdir -p dist/fonts && cp -R src/style/fonts dist",
+		"build": "npm run css && npm run js && npm run images && npm run html && npm run fonts",
+		"build:production": "npm run build && npm run favicons",
+		"start": "node .",
+		"clean": "rm -rf node_modules && rm -rf dist",
+		"production": "npm run build:production && mkdir -p ~/web/marc-hein.de/ppi && cp -R dist/* ~/web/marc-hein.de/ppi/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/marchein/ppi-website.git"
+	},
+	"author": "Marc Hein",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/marchein/ppi-website/issues"
+	},
+	"homepage": "https://github.com/marchein/ppi-website#readme"
 }
