@@ -9,11 +9,11 @@
 	},
 	"devDependencies": {
 		"html": "1.0.0",
-		"pug": "3.0.0",
-		"pug-cli": "1.0.0-alpha6",
-		"live-server": "^1.2.1"
+		"live-server": "^1.2.1",
+		"pug": "^3.0.2"
 	},
 	"scripts": {
+		"preinstall": "npm install -g pug-cli",
 		"lint": "eslint -c ./.eslintrc.json js/**",
 		"js": "mkdir -p dist/js && browserify src/js/main.js > dist/js/main.js",
 		"css": "mkdir -p dist/style && lessc src/style/style.less dist/style/style.css",
